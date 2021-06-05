@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="text" id="message" placeholder="Enter your message">
+    <input type="text"  id="url" placeholder="Enter iamge Url">
+    <button id="btn">Send</button>
+    <script>
+        document.getElementById("btn").addEventListener("click", () => {
+            name = document.getElementById("name").value;
+            message = document.getElementById("message").value;
+            url = document.getElementById("url").value;
+
+            document.getElementById("name").value = "";
+            document.getElementById("message").value = "";
+            document.getElementById("url").value = "";
+            
+            const data = {name,message,url}
+            const options = {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+            fetch('/api',options);
+        });
+    </script>
+</body>
+
+</html>
